@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BESTFORGE</title>
 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <h1 class="logo">⚡ BESTFORGE</h1>
+
+        <div class="header-actions">
+            <button class="cart-btn" onclick="toggleCart()">
+                🛒 <span id="cartCount">0</span>
+            </button>
+
+            <button class="ai-chat-btn" onclick="toggleAIChat()">🤖</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>🚀 Hardware de Alta Performance</h1>
+    <p>Os melhores componentes para seu setup</p>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar..." oninput="filterProducts()">
+    </div>
+</section>
+
+<section class="products-container">
+    <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- Carrinho -->
+<div class="cart-modal" id="cartModal"></div>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- ADMIN -->
+<button class="admin-toggle" onclick="toggleAdmin()">⚙️</button>
+
+<div class="admin-panel" id="adminPanel">
+    <div class="admin-header">
+        <h2>Painel Admin</h2>
+        <button onclick="toggleAdmin()">✕</button>
+    </div>
+
+    <div class="admin-content">
+        <input id="prodName" placeholder="Nome">
+        <input id="prodPrice" placeholder="Preço">
+
+        <select id="prodCategory">
+            <option value="GPU">GPU</option>
+            <option value="CPU">CPU</option>
+            <option value="RAM">RAM</option>
+            <option value="Storage">Storage</option>
+        </select>
+
+        <button onclick="saveProduct()">Salvar</button>
+
+        <input id="adminSearch" placeholder="Buscar..." oninput="renderAdminProducts()">
+
+        <div id="adminProductsList"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
