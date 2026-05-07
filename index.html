@@ -139,7 +139,7 @@
         <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scrollbar"></div>
         <div class="p-6 sm:p-8 border-t bg-white">
             <div class="flex justify-between font-black text-lg sm:text-xl mb-6 text-slate-800 uppercase"><span>TOTAL</span><span id="cartTotalDisplay">R$ 0,00</span></div>
-            <button class="w-full py-4 sm:py-5 bg-slate-900 text-white rounded-2xl font-black shadow-xl hover:bg-indigo-600 transition uppercase tracking-widest italic text-xs sm:text-sm">Finalizar Compra</button>
+            <button onclick="checkoutWhatsApp()" class="w-full py-4 sm:py-5 bg-slate-900 text-white rounded-2xl font-black shadow-xl hover:bg-indigo-600 transition uppercase tracking-widest italic text-xs sm:text-sm">Finalizar Compra</button>
         </div>
     </aside>
 
@@ -216,7 +216,7 @@
             <div class="flex gap-1 p-1 bg-slate-100 rounded-xl">
                 <button onclick="switchAdminTab('products')" class="flex-1 py-2 sm:py-3 text-[9px] sm:text-[10px] font-black rounded-lg bg-white shadow-sm transition uppercase tracking-widest" id="btnTabProd">Produtos</button>
                 <button onclick="switchAdminTab('categories')" class="flex-1 py-2 sm:py-3 text-[9px] sm:text-[10px] font-black text-slate-500 transition uppercase tracking-widest" id="btnTabCat">Categorias</button>
-                <button onclick="switchAdminTab('appearance')" class="flex-1 py-2 sm:py-3 text-[9px] sm:text-[10px] font-black text-slate-500 transition uppercase tracking-widest" id="btnTabApper">Aparência</button>
+                <button onclick="switchAdminTab('appearance')" class="flex-1 py-3 text-[9px] sm:text-[10px] font-black text-slate-500 transition uppercase tracking-widest" id="btnTabApper">Aparência</button>
             </div>
 
             <div id="adminTabProducts" class="space-y-4 sm:space-y-6">
@@ -250,7 +250,7 @@
     <div id="editorModal" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-4 sm:p-6 bg-slate-900/80 backdrop-blur-xl">
         <div class="bg-white w-full max-w-xl rounded-[32px] sm:rounded-[40px] shadow-2xl overflow-hidden flex flex-col text-left">
             <div class="p-6 sm:p-8 border-b flex justify-between items-center"><h3 id="editorTitle" class="font-black text-slate-900 uppercase italic">Editor</h3><button onclick="closeEditor()" class="text-slate-400 p-2">✕</button></div>
-            <div class="p-6 sm:p-10 overflow-y-auto max-h-[70vh] space-y-6 custom-scrollbar">
+            <div class="p-6 sm:p-10 overflow-y-auto max-h-[70vh] space-y-6 custom-scrollbar text-left">
                 
                 <div>
                     <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Nome do Item</label>
@@ -259,18 +259,18 @@
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Categoria</label>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block text-left">Categoria</label>
                         <select id="edtCategory" class="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold text-slate-600 text-xs sm:text-sm"></select>
                     </div>
                     <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Preço (R$)</label>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block text-left">Preço (R$)</label>
                         <input type="number" id="edtPrice" placeholder="0.00" class="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold text-slate-800">
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl">
+                <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl text-left">
                     <input type="checkbox" id="edtIsBestSeller" class="w-5 h-5 sm:w-6 sm:h-6 rounded-lg accent-indigo-600">
-                    <label class="text-[9px] sm:text-[10px] font-black text-slate-500 uppercase tracking-widest">Aparecer no Topo (Mais Vendidos)</label>
+                    <label class="text-[9px] sm:text-[10px] font-black text-slate-500 uppercase tracking-widest text-left">Aparecer no Topo (Mais Vendidos)</label>
                 </div>
 
                 <div class="pt-2">
@@ -282,7 +282,7 @@
                 </div>
 
                 <div class="p-4 sm:p-5 bg-indigo-50/50 rounded-2xl sm:rounded-3xl border-2 border-dashed border-indigo-100 text-left">
-                    <label class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-2 block">Mídia do Item</label>
+                    <label class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-2 block text-left">Mídia do Item</label>
                     <div id="imagePreview" class="w-full h-24 sm:h-32 bg-white rounded-xl mb-3 flex items-center justify-center overflow-hidden border border-indigo-50">
                         <span id="previewPlaceholder" class="text-slate-300 text-[10px] font-black uppercase tracking-widest text-center px-4">Visualização</span>
                     </div>
@@ -298,11 +298,11 @@
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Emoji Backup</label>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block text-left">Emoji Backup</label>
                         <input type="text" id="edtIcon" placeholder="🏗️" class="w-full p-4 bg-slate-50 rounded-2xl outline-none text-center">
                     </div>
                     <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Selo (Badge)</label>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block text-left">Selo (Badge)</label>
                         <select id="edtBadge" class="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold text-xs">
                             <option value="">Nenhum</option>
                             <option value="badge-sale">Promoção</option>
@@ -312,7 +312,7 @@
                     </div>
                 </div>
             </div>
-            <div class="p-6 sm:p-8 bg-slate-50 flex gap-4"><button onclick="closeEditor()" class="flex-1 font-black text-slate-400 uppercase text-[10px] transition hover:text-slate-600">Cancelar</button><button onclick="commitProduct()" class="flex-[3] bg-indigo-600 text-white py-4 sm:py-5 rounded-2xl sm:rounded-3xl font-black shadow-2xl hover:bg-indigo-700 transition uppercase tracking-widest italic text-xs">Gravar Item</button></div>
+            <div class="p-6 sm:p-8 bg-slate-50 flex gap-4 text-center"><button onclick="closeEditor()" class="flex-1 font-black text-slate-400 uppercase text-[10px] transition hover:text-slate-600">Cancelar</button><button onclick="commitProduct()" class="flex-[3] bg-indigo-600 text-white py-4 sm:py-5 rounded-2xl sm:rounded-3xl font-black shadow-2xl hover:bg-indigo-700 transition uppercase tracking-widest italic text-xs">Gravar Item</button></div>
         </div>
     </div>
 
@@ -388,6 +388,27 @@
             if(document.getElementById('inpStoreHero')) document.getElementById('inpStoreHero').value = appearance.heroTitle;
         }
 
+        // --- WHATSAPP CHECKOUT ---
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return showToast("SEU CARRINHO ESTÁ VAZIO!");
+            
+            const phoneNumber = "5511940703609";
+            let message = "Olá! Gostaria de fazer um pedido na BESTFORGE 3D:\n\n";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                message += `${index + 1}. *${item.name}* - R$ ${item.price.toFixed(2)}\n`;
+                total += item.price;
+            });
+
+            message += `\n*TOTAL: R$ ${total.toFixed(2)}*`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
         // --- FILTERS & RENDER ---
         function renderCategoryFilters() {
             const tabs = document.getElementById('mainCategoryTabs');
@@ -424,7 +445,7 @@
             if(src) {
                 preview.innerHTML = `<img src="${src}" class="max-h-full max-w-full object-contain">`;
             } else {
-                preview.innerHTML = `<span id="previewPlaceholder" class="text-slate-300 text-[10px] font-black uppercase tracking-widest text-center">Visualização</span>`;
+                preview.innerHTML = `<span id="previewPlaceholder" class="text-slate-300 text-[10px] font-black uppercase tracking-widest text-center px-4">Visualização</span>`;
             }
         }
 
@@ -507,7 +528,7 @@
                         ${p.badge ? `<span class="absolute top-2 left-2 sm:top-4 sm:left-4 px-2 py-0.5 sm:px-3 sm:py-1 text-[7px] sm:text-[8px] font-black rounded-full uppercase italic ${p.badge}">${p.badgeText || 'DESTAQUE'}</span>` : ''}
                         ${p.image ? `<img src="${p.image}">` : `<span class="text-3xl sm:text-5xl opacity-40 grayscale">${p.icon}</span>`}
                     </div>
-                    <div class="px-2 sm:px-4 pb-3 sm:pb-6 flex flex-col flex-1 text-left">
+                    <div class="px-2 sm:px-4 pb-3 sm:pb-6 flex flex-col flex-1 text-left text-left">
                         <span class="text-[7px] sm:text-[9px] font-black text-indigo-600 uppercase tracking-widest mb-1 sm:mb-2 text-left">${p.category}</span>
                         <h4 class="font-black text-slate-900 text-[10px] sm:text-sm mb-2 sm:mb-3 uppercase italic line-clamp-1 text-left">${p.name}</h4>
                         <div class="mt-auto flex justify-between items-end">
@@ -524,8 +545,8 @@
             const adminP = document.getElementById('adminProductList');
             if(adminP) {
                 adminP.innerHTML = products.map(p => `
-                    <div class="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-2xl border border-slate-100 text-left">
-                        <div class="flex items-center gap-2 sm:gap-3 text-left"><span class="text-base sm:text-xl">${p.icon}</span><span class="text-[9px] sm:text-[10px] font-black uppercase italic truncate w-24 sm:w-32 text-left">${p.name}</span></div>
+                    <div class="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-2xl border border-slate-100 text-left text-left">
+                        <div class="flex items-center gap-2 sm:gap-3 text-left text-left text-left"><span class="text-base sm:text-xl">${p.icon}</span><span class="text-[9px] sm:text-[10px] font-black uppercase italic truncate w-24 sm:w-32 text-left">${p.name}</span></div>
                         <div class="flex gap-1"><button onclick="openEditor(${p.id})" class="p-2 bg-white rounded-lg shadow-sm text-indigo-600 transition hover:bg-indigo-50">✏️</button><button onclick="deleteProduct(${p.id})" class="p-2 bg-white rounded-lg shadow-sm text-red-500 transition hover:bg-red-50">🗑️</button></div>
                     </div>
                 `).join('');
@@ -534,8 +555,8 @@
             const adminC = document.getElementById('adminCategoryList');
             if(adminC) {
                 adminC.innerHTML = categories.map(cat => `
-                    <div class="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-2xl border border-slate-100 font-black text-[9px] sm:text-[10px] uppercase tracking-widest text-left">
-                        <span class="text-slate-700 text-left">${cat}</span>
+                    <div class="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-2xl border border-slate-100 font-black text-[9px] sm:text-[10px] uppercase tracking-widest text-left text-left">
+                        <span class="text-slate-700 text-left text-left">${cat}</span>
                         <button onclick="removeCategory('${cat}')" class="text-red-400 hover:text-red-600 transition p-1">🗑️</button>
                     </div>
                 `).join('');
@@ -643,7 +664,7 @@
             document.getElementById('detailCategory').textContent = p.category;
             document.getElementById('detailPrice').textContent = `R$ ${p.price.toLocaleString()}`;
             document.getElementById('detailDescription').textContent = p.description;
-            document.getElementById('detailImageContainer').innerHTML = p.image ? `<img src="${p.image}" class="max-h-full">` : `<span class="text-7xl sm:text-9xl grayscale opacity-10">${p.icon}</span>`;
+            document.getElementById('detailImageContainer').innerHTML = p.image ? `<img src="${p.image}" class="max-h-full">` : `<span class="text-7xl sm:text-9xl grayscale opacity-10 text-center text-center text-center text-center text-center">${p.icon}</span>`;
             document.getElementById('aiExpertResponse').classList.add('hidden');
             document.getElementById('detailAddToCartBtn').onclick = () => { addToCart(id); closeProductDetail(); };
             document.getElementById('productDetailPage').classList.remove('translate-y-full','opacity-0','pointer-events-none');
@@ -653,8 +674,7 @@
         function closeProductDetail() { document.getElementById('productDetailPage').classList.add('translate-y-full','opacity-0','pointer-events-none'); document.body.style.overflow = 'auto'; }
 
         function addToCart(id) {
-            const p = products.find(i => i.id === id);
-            cart.push(p);
+            cart.push(products.find(i => i.id === id));
             document.getElementById('cartBadge').textContent = cart.length;
             showToast("ITEM FORJADO!");
         }
@@ -663,8 +683,8 @@
             let sum = 0;
             document.getElementById('cartItemsList').innerHTML = cart.map((p, i) => {
                 sum += p.price;
-                return `<div class="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-xl border border-slate-100 text-left">
-                    <span class="text-[9px] sm:text-[10px] font-black uppercase italic truncate w-32 sm:w-40 text-slate-800 text-left">${p.name}</span>
+                return `<div class="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-xl border border-slate-100 text-left text-left">
+                    <span class="text-[9px] sm:text-[10px] font-black uppercase italic truncate w-32 sm:w-40 text-slate-800 text-left text-left">${p.name}</span>
                     <button onclick="cart.splice(${i},1);renderCart();" class="text-red-400 p-1">✕</button></div>`;
             }).join('');
             document.getElementById('cartTotalDisplay').textContent = `R$ ${sum.toLocaleString()}`;
